@@ -1,0 +1,23 @@
+{
+  "displayName": "DeepSeek / MiMo Bridge",
+  "shortDescription": "Ask DeepSeek or MiMo on demand",
+  "longDescription": "Bridges DeepSeek (deepseek-flash / deepseek-v4-pro) and Xiaomi MiMo (mimo-v2.6-pro / mimo-v2.6-flash) into Kimi as tools: when you need a second opinion, a code review, or a different model's view, hand the question to the model you name and get back its full answer plus reasoning, then let Kimi summarise it. One model per request — the two never answer the same question together. API keys are reused from DeepSeek Harness credentials.",
+  "developerName": "25398",
+  "tryPrompts": [
+    "Ask DeepSeek to review this code for real problems",
+    "Try MiMo on my previous question for comparison",
+    "Ask DeepSeek what could go wrong with this plan"
+  ],
+  "mcpOverrides": {
+    "bridge": {
+      "displayName": "DeepSeek / MiMo",
+      "description": "Ask DeepSeek or MiMo a single question (one model at a time)"
+    }
+  },
+  "skillOverrides": {
+    "deepseek-mimo-consult": {
+      "displayName": "Model hand-off guide",
+      "description": "When to call DeepSeek vs MiMo, how to pick parameters, and how to debug failures"
+    }
+  }
+}

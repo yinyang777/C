@@ -1,0 +1,20 @@
+{
+  "providers": {
+    "deepseek": {
+      "baseUrl": "https://api.deepseek.com",
+      "apiKeyEnv": "DEEPSEEK_API_KEY",
+      "credRef": "DEEPSEEK_API_KEY",
+      "defaultModel": "deepseek-flash",
+      "models": ["deepseek-flash", "deepseek-v4-pro"],
+      "maxTokens": 8192
+    },
+    "mimo": {
+      "baseUrl": "https://api.xiaomimimo.com/v1",
+      "apiKeyEnv": "MIMO_API_KEY",
+      "credRef": "XIAOMI_API_KEY",
+      "defaultModel": "mimo-v2.6-pro",
+      "models": ["mimo-v2.6-pro", "mimo-v2.6-flash", "mimo-v2.6-pro-ultraspeed"],
+      "maxTokens": 8192
+    }
+  }
+}

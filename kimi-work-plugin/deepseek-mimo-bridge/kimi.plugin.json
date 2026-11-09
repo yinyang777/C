@@ -1,0 +1,72 @@
+{
+  "$schema": "https://statics.kimi.ai/catalog/schemas/kimi.plugin.schema.json",
+  "name": "deepseek-mimo-bridge",
+  "version": "0.1.0",
+  "description": "在 Kimi Work / Kimi Code 中按需调用 DeepSeek 与小米 MiMo 模型：一次一个模型，随时转问、拿回答案，由 Kimi 整合交付。",
+  "keywords": [
+    "deepseek",
+    "mimo",
+    "xiaomi",
+    "model-router",
+    "second-opinion",
+    "顾问",
+    "模型桥",
+    "mcp"
+  ],
+  "author": "25398",
+  "homepage": "https://github.com/",
+  "license": "MIT",
+  "skills": "./skills/",
+  "systemPromptPath": "./SYSTEM.md",
+  "skillInstructions": "这两个外部模型工具是「按需转问」通道，不是主模型替代品：用户点名 DeepSeek / MiMo 时才调用对应工具，一次只调一个模型，绝不用两个模型回答同一个问题。调用前把必要上下文放进 prompt（工具不记忆历史）；调用后如实转述并标注模型名，不得改写结论或伪造未发生的调用。",
+  "commands": "./commands/",
+  "mcpServers": {
+    "bridge": {
+      "command": "node",
+      "args": [
+        "./server/index.mjs"
+      ],
+      "cwd": "./",
+      "enabledTools": [
+        "ask_deepseek",
+        "ask_mimo",
+        "bridge_status"
+      ],
+      "toolTimeoutMs": 180000
+    }
+  },
+  "interface": {
+    "displayName": "DeepSeek / MiMo 顾问桥",
+    "shortDescription": "转问 DeepSeek 与 MiMo",
+    "longDescription": "把 DeepSeek（deepseek-flash / deepseek-v4-pro）和小米 MiMo（mimo-v2.6-pro / mimo-v2.6-flash）接入 Kimi 的工具通道：需要第二意见、代码审查、换模型视角时，一句话把问题转给指定模型，拿回完整回答与思考过程，再由 Kimi 转述整合。单模型按需调配，两个模型不会同时处理同一个问题。密钥优先复用 DeepSeek Harness 已保存的凭据。",
+    "developerName": "25398",
+    "websiteURL": "https://api-docs.deepseek.com/",
+    "iconUrl": "https://avatar.moonshot.cn/avatar/plugin/fallback3.png",
+    "category": "PRODUCTIVITY",
+    "hostKind": "local",
+    "platforms": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "defaultLocale": "zh-CN",
+    "locales": "./locales/",
+    "tryPrompts": [
+      "让 DeepSeek 把这段代码审一下，挑出真正会出问题的地方",
+      "换 MiMo 重新回答我刚才的问题，我想对比一下",
+      "问一下 DeepSeek 这个方案有什么风险"
+    ],
+    "mcpOverrides": {
+      "bridge": {
+        "displayName": "DeepSeek / MiMo",
+        "description": "调用 DeepSeek 或 MiMo 模型做单次问答（单模型、按需调配）"
+      }
+    },
+    "skillOverrides": {
+      "deepseek-mimo-consult": {
+        "displayName": "模型转问指南",
+        "description": "什么时候调 DeepSeek、什么时候调 MiMo，参数怎么选，失败了怎么查"
+      }
+    }
+  }
+}
